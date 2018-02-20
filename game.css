@@ -1,0 +1,84 @@
+ td{
+     border:1px solid black;
+     height:1px;
+     width:1px;
+   }
+   
+   #hud{
+     width: 650px;
+    position: absolute;
+    left: 500px;
+    top: 10px;
+    font-size:14px;
+   }
+
+   #socialActivity{
+     width:300px;
+     position:absolute;
+     left:1190px;
+     top:10px;
+   }
+
+   #socialActivity .content{
+     min-height:500px;
+     border:solid 1px black;
+   }
+
+   #hud p{
+     margin: 5px 0px;  
+   }
+   
+   #hud h1{
+     margin-top:14px;
+     margin-bottom: 5px;
+   }
+   
+   #hud h2{
+     margin: 20px 0 5px;
+   }
+   
+   #hud button{
+   
+    display:block;
+    margin-bottom:10px;
+   }
+   
+   table{
+     border:1px solid black;
+     width:100px;
+   }
+   
+   table#city{
+     margin-right:10px;
+   }
+   
+   .arrow{
+     font-size:20px;
+     font-weight:bold;
+     cursor:pointer;
+   }
+   
+   table, .form{
+     float:left;
+   }
+   
+   .form button{
+     display:block;
+   }
+   
+   .stats{
+     float:left;
+   }
+   
+   .float-left{
+     float:left;
+   }
+ 
+  .clear{
+    clear:both;
+  }
+  
+  .col{
+    min-width:150px;
+    margin-right: 10px;
+  }

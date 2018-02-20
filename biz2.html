@@ -1,0 +1,198 @@
+<html>
+<head>
+
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 500px;
+        width: 500px;
+        float:left;
+      }
+      
+      #hud{
+        float:left;
+        margin-left:20px;
+      }
+      
+      #legend{
+        clear:both;
+      }
+      
+      .legend{
+        height:10px;
+        width:10px;
+        background-color:blue;
+        display: inline-block;
+      }
+      
+      #hud #dayControls{
+       clear:both;
+      }
+      
+      #hud #dayControls button{
+       display: inline-block;}
+      
+      .wrapper{
+        width:auto;
+      }
+      
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+      
+      .question{
+        border-radius:50%;
+        height: 16px;
+        width: 16px;
+        color: white;
+        background: black;
+        display:inline-block;
+        position: relative;
+        top: -2px;
+      }
+      
+      .question::after { 
+        content: "?";
+        position: relative;
+        top: 1px;
+        left: 5px;
+        font-size: 12px;
+        
+      }
+      
+    </style>
+    <link rel="stylesheet" type="text/css" href="lib/tippyjs-master/dist/tippy.css" />
+    <link rel="stylesheet" type="text/css" href="lib/remodal/remodal.css" />
+    
+    <link rel="stylesheet" type="text/css" href="lib/remodal/remodal-default-theme.css" />
+    
+    
+    <link rel="stylesheet" type="text/css" href="game.css?asf" />
+    <link rel="stylesheet" type="text/css" href="speech.css" />
+    
+
+  <script src="lib/jquery-2.1.1.min.js"></script>
+  <script src="lib/underscore.js"></script>
+  <script src="lib/backbone.js"></script>
+  <script src="lib/tippyjs-master/dist/tippy.js"></script>
+  
+  <script src="lib/remodal/remodal.js"></script>
+  
+  <script src="config.js"></script>
+  <script src="game2.js"></script>
+  
+  <script src="comments-view.js?afds"></script>
+  <script src="time.js?afds"></script>
+  <script src="googleMaps.js"></script>
+  <script src="business.js?addsdd"></script>
+  <script src="lostCustomers.js"></script>
+  <script src="population.js?hjh"></script>
+  
+  
+  
+  
+  <!--
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone-localstorage.js/1.0/backbone.localStorage-min.js" type="text/javascript"></script>   -->
+
+</head>
+<body>
+
+<div id="container" ></div>
+
+  <div class="wrapper">
+    <h1 style="margin:0;">Hair Salon, Ridgewood, NJ</h1> <h4 style="margin:0px 0 5px;">(You play as the Lisa Thomas Salon)</h4> 
+    
+    <div id="map"></div>
+
+<div id="hud">
+
+  <div class="float-left col">
+  
+  <div class="float-left col">
+  
+    <h1>Day <span id="day">0</span></h1>
+    <p>Businesses:<br> <select id="businessDropdown"></select></p>
+    <h2><span class="hour">0</span>:<span class="minute">00</span> <span class="am_pm">AM</span> </h2>
+  </div>
+  <div class="stats col">
+    <p class="c-lost" >Customers Lost: <span>0</span></p>
+    <p class="c-serviced" >Customers Serviced: <span>0</span></p>
+    <p id="customerBase" >Customer Base: <span>0</span></p>
+    <p id="minCustomerBase" >*Min Customer Base: <span>0</span></p>
+  
+  </div>
+  <div id="static-info" class="float-left col">
+    <p id="price-per-haircut">Cost of haircut: $<span>0</span></p>
+    <p id="employee-num">Number of Employees: <span>0</span> 
+    <p id="expenses">*Monthy Expenses to pay: $<span>0</span>  
+    <p class="total-money" >Total Money: $<span>0</span></p>
+  </div>
+  
+  <div id="dayControls">
+    <label for="marketingCost">Marketing? (Cost Per Lead: $<span class="costPerLead" >0</span>) $</label>
+    <input style="margin-bottom:10px;" type="text" id="marketingCost" name="marketingCost" >
+    <br>
+    <button class="clear" id="start-1">Start 1 Day</button>
+    <button class="clear" id="start-7">Start 7 Days</button>
+    <input type="checkbox" id="showTimes" name="showTimes" >
+    <label for="showTimes">Show appointment times? </label><span title="Show the appointment times for customers as they enter and leave your store in the feed below. Not printing this info allows the game to get through the day faster." class="question"></span>
+    
+  </div>
+
+  <div class="clear"></div>
+  </div>
+  <div class="float-left col">
+    <div class="form">
+      <textarea cols="80" rows="18"></textarea>
+    </div>
+  </div>
+  <div id='legend'>
+    <h2>Legend</h2>
+    <p><span style="background-color:#32CD32;" class="legend"></span> You</p>
+    <p><span style="background-color:#FF765A;" class="legend"></span> Competitors</p>
+    <p><span style="background-color:#00FFFF;" class="legend"></span> Customer (changes to <span style="background-color:#FFA500;" class="legend"></span> when the customer has paid)</p>
+    
+  </div>
+  
+</div>
+
+<div id="socialActivity">
+    <h2>Social Activity</h2>
+    <div class="content">
+    </div>
+  </div>
+
+</div>
+    
+<!-- the modals -->
+    
+<div id="reportModal" data-remodal-id="modal">
+  <button data-remodal-action="close" class="remodal-close"></button>
+  <h1>Monthly Report</h1>
+  <p></p>
+</div>
+<script>
+    
+
+    reportModal = $('[data-remodal-id=modal]#reportModal').remodal();
+    
+    
+</script>    
+    
+    
+    <script src="main.js?asddgw">
+    </script>
+
+    <script>
+      $.getScript("https://maps.googleapis.com/maps/api/js?key="+api_key+"&callback=initMap")
+      
+    </script>
+
+</body>
+<script>
+  tippy('.question')
+</script>
+</html>
